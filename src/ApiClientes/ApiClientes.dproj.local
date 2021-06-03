@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/06/02 20:55:57.000.240,D:\Sistemas\mobile-day-main\horse-dataset-serialize\backend\backend.dproj=D:\Sistemas\mobile-day-main\horse-dataset-serialize\backend\ApiClientes.dproj</Transaction>
+    <Transaction>2021/06/02 21:05:08.000.109,=D:\Sistemas\MicroData\src\UConecta.pas</Transaction>
+    <Transaction>2021/06/02 21:06:41.000.904,=D:\Sistemas\MicroData\src\UConexaoBDpas.pas</Transaction>
+    <Transaction>2021/06/02 21:08:53.000.035,D:\Sistemas\MicroData\src\UConexaoBDpas.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

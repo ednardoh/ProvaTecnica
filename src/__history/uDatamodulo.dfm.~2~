@@ -1,0 +1,23 @@
+object frmDatamodulo: TfrmDatamodulo
+  OldCreateOrder = False
+  Height = 301
+  Width = 409
+  object DBConect: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    HostName = ''
+    Port = 0
+    Database = ''
+    User = ''
+    Password = ''
+    Protocol = ''
+    Left = 30
+    Top = 16
+  end
+  object QryAux: TZQuery
+    Connection = DBConect
+    Params = <>
+    Left = 116
+    Top = 20
+  end
+end

@@ -1,0 +1,166 @@
+unit uCadContato;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons,uClsContato,
+  Vcl.ComCtrls, Vcl.Mask;
+
+type
+  TfrmCadContato = class(TForm)
+    pnl_Bottom: TPanel;
+    pnl_Contato: TPanel;
+    BTN_Inserir: TBitBtn;
+    BTN_Editar: TBitBtn;
+    BTN_Cancelar: TBitBtn;
+    BTN_Excluir: TBitBtn;
+    pnl_Cliente: TPanel;
+    BTN_Fechar: TBitBtn;
+    BTN_Gravar: TBitBtn;
+    EDT_LNomeContato: TEdit;
+    Label3: TLabel;
+    DTP_Nascimento: TDateTimePicker;
+    Label1: TLabel;
+    EDT_Idade: TEdit;
+    Label2: TLabel;
+    MKE_CEP: TMaskEdit;
+    Label4: TLabel;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BTN_FecharClick(Sender: TObject);
+    procedure BTN_InserirClick(Sender: TObject);
+    procedure BTN_EditarClick(Sender: TObject);
+    procedure BTN_CancelarClick(Sender: TObject);
+    procedure BTN_GravarClick(Sender: TObject);
+    procedure BTN_ExcluirClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EDT_LNomeContatoEnter(Sender: TObject);
+    procedure EDT_LNomeContatoExit(Sender: TObject);
+    procedure DTP_NascimentoEnter(Sender: TObject);
+    procedure DTP_NascimentoExit(Sender: TObject);
+    procedure MKE_CEPEnter(Sender: TObject);
+    procedure MKE_CEPExit(Sender: TObject);
+  private
+    { Private declarations }
+    Contatos: TContatos;
+    strStatusCli: string;
+    procedure DesabilitaBotao(bInserir,bEditar,bCancelar,bGravar,bExcluir: boolean);
+    procedure LimpaCampos;
+  public
+    { Public declarations }
+    glbValIDCliente, glbValNomeCliente: string;
+  end;
+
+var
+  frmCadContato: TfrmCadContato;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCadContato.BTN_CancelarClick(Sender: TObject);
+begin
+  DesabilitaBotao(True, True, False, False, True);
+  strStatusCli :='';
+end;
+
+procedure TfrmCadContato.BTN_EditarClick(Sender: TObject);
+begin
+  strStatusCli :='dsEditando';
+  DesabilitaBotao(False, False, True, True, False);
+  EDT_LNomeContato.SetFocus;
+end;
+
+procedure TfrmCadContato.BTN_ExcluirClick(Sender: TObject);
+begin
+  strStatusCli :='dsExcluindo';
+  DesabilitaBotao(True, True, False, False, True);
+end;
+
+procedure TfrmCadContato.BTN_FecharClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfrmCadContato.BTN_GravarClick(Sender: TObject);
+begin
+  DesabilitaBotao(True, True, False, False, True);
+  strStatusCli :='';
+end;
+
+procedure TfrmCadContato.BTN_InserirClick(Sender: TObject);
+begin
+  strStatusCli :='dsInserindo';
+  DesabilitaBotao(False, False, True, True, False);
+  LimpaCampos;
+  EDT_LNomeContato.SetFocus;
+end;
+
+procedure TfrmCadContato.DesabilitaBotao(bInserir, bEditar, bCancelar, bGravar, bExcluir: boolean);
+begin
+  BTN_Inserir.Enabled  :=bInserir;
+  BTN_Editar.Enabled   :=bEditar;
+  BTN_Cancelar.Enabled :=bCancelar;
+  BTN_Gravar.Enabled   :=bGravar;
+  BTN_Excluir.Enabled  :=bExcluir;
+end;
+
+procedure TfrmCadContato.DTP_NascimentoEnter(Sender: TObject);
+begin
+  TDateTimePicker(Sender).Color := clYellow;
+end;
+
+procedure TfrmCadContato.DTP_NascimentoExit(Sender: TObject);
+begin
+  TDateTimePicker(Sender).Color := clWindow;
+end;
+
+procedure TfrmCadContato.EDT_LNomeContatoEnter(Sender: TObject);
+begin
+  TEdit(Sender).Color := clYellow;
+end;
+
+procedure TfrmCadContato.EDT_LNomeContatoExit(Sender: TObject);
+begin
+  TEdit(Sender).Color := clWindow;
+end;
+
+procedure TfrmCadContato.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := cafree;
+end;
+
+procedure TfrmCadContato.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+ if key=vk_return then
+     Perform(WM_nextdlgctl,0,0)
+ else if Key=vk_escape then
+     Perform(WM_nextdlgctl,1,0);
+end;
+
+procedure TfrmCadContato.FormShow(Sender: TObject);
+begin
+  DesabilitaBotao(True, True, False, False, True);
+  pnl_Cliente.Caption :='';
+  pnl_Cliente.Caption :='Cliente : '+glbValIDCliente+' - '+glbValNomeCliente;
+end;
+
+procedure TfrmCadContato.LimpaCampos;
+begin
+  EDT_LNomeContato.Clear;
+  DTP_Nascimento.Date := 0;
+  MKE_CEP.Clear;
+end;
+
+procedure TfrmCadContato.MKE_CEPEnter(Sender: TObject);
+begin
+  TMaskEdit(Sender).Color := clYellow;
+end;
+
+procedure TfrmCadContato.MKE_CEPExit(Sender: TObject);
+begin
+  TMaskEdit(Sender).Color := clWindow;
+end;
+
+end.

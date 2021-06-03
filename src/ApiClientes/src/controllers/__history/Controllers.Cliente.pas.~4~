@@ -1,0 +1,54 @@
+unit Controllers.Cliente;
+
+interface
+
+procedure Registry;
+
+implementation
+
+uses Horse, Services.Cliente, DataSet.Serialize, System.JSON, Data.DB;
+
+//Lista de clientes
+procedure DoList(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+var
+  strNome: string;
+  LService: TServiceCliente;
+begin
+  LService := TServiceCliente.Create(nil);
+  try
+    strNome := Req.Params.Items['Nome'];
+    if LService.GetByNome(strNome).IsEmpty then
+      raise EHorseException.Create(THTTPStatus.NotFound, 'Not Found');
+    Res.Send(LService.qryCadastro.ToJSONObject());
+  finally
+    LService.Free;
+  end;
+end;
+
+procedure DoPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+begin
+  // para implementar depois
+end;
+
+procedure DoGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+begin
+  // para implementar depois
+end;
+
+
+procedure DoPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+begin
+  // para implementar depois
+end;
+
+procedure DoDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+begin
+  // para implementar depois
+end;
+
+procedure Registry;
+begin
+  THorse.Get('/clientes/:Nome', DoList);  //Lista de Clientes
+end;
+
+end.
