@@ -33,13 +33,8 @@ object frmCadCliente: TfrmCadCliente
       ActivePage = TBS_Grdcliente
       Align = alClient
       TabOrder = 0
-      ExplicitTop = 12
-      ExplicitWidth = 620
-      ExplicitHeight = 193
       object TBS_Grdcliente: TTabSheet
         Caption = 'Clientes'
-        ExplicitWidth = 612
-        ExplicitHeight = 165
         object DBG_CadCli: TDBGrid
           Left = 0
           Top = 0
@@ -71,8 +66,6 @@ object frmCadCliente: TfrmCadCliente
       end
       object TBS_Json: TTabSheet
         Caption = 'Formato JSon'
-        ExplicitWidth = 612
-        ExplicitHeight = 165
         object MMO_Json: TMemo
           Left = 0
           Top = 0
@@ -94,7 +87,6 @@ object frmCadCliente: TfrmCadCliente
     Height = 213
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1031
     object Label1: TLabel
       Left = 12
       Top = 16
@@ -265,7 +257,6 @@ object frmCadCliente: TfrmCadCliente
       Height = 54
       Align = alBottom
       TabOrder = 11
-      ExplicitWidth = 1029
       object imgHorse: TImage
         Left = 6
         Top = -2
@@ -5359,7 +5350,7 @@ object frmCadCliente: TfrmCadCliente
       object Label11: TLabel
         Left = 98
         Top = -3
-        Width = 404
+        Width = 385
         Height = 26
         Caption = 
           'Pesquisa de Clentes Consumindo Api Horse: digite parte do nome d' +
@@ -6007,9 +5998,6 @@ object frmCadCliente: TfrmCadCliente
     Height = 217
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 413
-    ExplicitWidth = 1031
-    ExplicitHeight = 229
     object Panel1: TPanel
       Left = 924
       Top = 1
@@ -6020,8 +6008,6 @@ object frmCadCliente: TfrmCadCliente
       Color = 12615680
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 930
-      ExplicitHeight = 227
       object BTN_Contatos: TBitBtn
         Left = 0
         Top = 0
@@ -6131,7 +6117,6 @@ object frmCadCliente: TfrmCadCliente
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
         TabOrder = 0
         OnClick = BTN_ContatosClick
-        ExplicitHeight = 227
       end
     end
     object Panel2: TPanel
@@ -6142,8 +6127,6 @@ object frmCadCliente: TfrmCadCliente
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 929
-      ExplicitHeight = 227
       object DBG_Contatos: TDBGrid
         Left = 0
         Top = 25
@@ -6175,7 +6158,6 @@ object frmCadCliente: TfrmCadCliente
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitWidth = 929
       end
     end
   end

@@ -266,6 +266,7 @@ var
   strJSON: string;
 begin
   pnl_Aguarde.Visible := True;
+  pnl_Aguarde.Refresh;
   strApiDataSet := 'stAPI';
   TBClientes.Close;
   TBClientes.Open;
@@ -503,6 +504,7 @@ begin
       TBClientes.Insert;
       TBClientesid.AsString          := JsonObjectJson.GetValue('id').Value;
       TBClientesnome.AsString        := JsonObjectJson.GetValue('nome').Value;
+      TBClientesCep.AsString         := JsonObjectJson.GetValue('cep').Value;
       TBClientesLogradouro.AsString  := JsonObjectJson.GetValue('logradouro').Value;
       TBClientesNumero.AsString      := JsonObjectJson.GetValue('numero').Value;
       TBClientesComplemento.AsString := JsonObjectJson.GetValue('complemento').Value;
