@@ -1,0 +1,68 @@
+unit Services.Cliente;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, System.JSON, DataSet.Serialize, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, ZAbstractConnection, ZConnection, Vcl.Forms, UConecta;
+
+type
+  TServiceCliente = class(TDataModule)
+    Connection: TZConnection;
+    qryCadastro: TZQuery;
+    qryPesquisa: TZQuery;
+    qryCadastroid: TIntegerField;
+    qryCadastronome: TWideStringField;
+    qryCadastroCep: TWideStringField;
+    qryCadastroLogradouro: TWideStringField;
+    qryCadastroNumero: TWideStringField;
+    qryCadastroBairro: TWideStringField;
+    qryCadastroCidade: TWideStringField;
+    qryCadastroSigla_uf: TWideStringField;
+    qryPesquisaid: TIntegerField;
+    qryPesquisanome: TWideStringField;
+    qryPesquisaCep: TWideStringField;
+    qryPesquisaLogradouro: TWideStringField;
+    qryPesquisaNumero: TWideStringField;
+    qryPesquisaBairro: TWideStringField;
+    qryPesquisaCidade: TWideStringField;
+    qryPesquisaSigla_uf: TWideStringField;
+    qryCadastroComplemento: TWideStringField;
+    qryCadastroIbge_cidade: TWideStringField;
+    qryCadastroIbge_uf: TWideStringField;
+    qryPesquisaComplemento: TWideStringField;
+    qryPesquisaIbge_cidade: TWideStringField;
+    qryPesquisaIbge_uf: TWideStringField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    conexaoClass : TConexao;
+  public
+    function ListClientes(const ANome: string): TZQuery;
+  end;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+procedure TServiceCliente.DataModuleCreate(Sender: TObject);
+begin
+  Connection.LibraryLocation := ExtractFilePath(Application.ExeName)+'ntwdblib.dll';
+  conexaoClass := TConexao.Create(ExtractFilePath(Application.ExeName) + 'ConfigDB.ini', 'Conexao');
+  conexaoClass.LeINI; //Lê as configurações de banco do aqruivo de configuração
+  conexaoClass.Conectar(Connection); //Conecta ao banco de dados
+end;
+
+function TServiceCliente.ListClientes(const ANome: string): TZQuery;
+begin
+  if ANome <> 'ALL' then
+    begin
+      qryPesquisa.SQL.Add('where Nome Like :Nome');
+      qryPesquisa.ParamByName('Nome').AsString := '%'+ANome+'%';
+    end;
+  qryPesquisa.Open();
+  Result := qryPesquisa;
+end;
+
+end.

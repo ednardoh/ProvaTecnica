@@ -33,7 +33,7 @@ type
 
       procedure LeINI(); virtual;
       procedure GravaINI(Usuario, Senha, Servidor, Banco, Driver: string; Porta: integer); virtual;
-      procedure Conectar(var Conexao: TZConnection); virtual;
+      procedure Conectar(var Conexao: TFDConnection); virtual;
 
    end;
 
@@ -42,7 +42,7 @@ implementation
 
 { TConexao }
 
-procedure TConexao.Conectar(var Conexao: TZConnection);
+procedure TConexao.Conectar(var Conexao: TFDConnection);
 begin
     LeINI();
 
@@ -50,14 +50,15 @@ begin
         //Passa os parâmetros para o objeto Conexão
         Conexao.Connected := false;
         Conexao.LoginPrompt := false;
-        Conexao.Properties.Clear;
-        Conexao.Properties.Add('hostname='+ Servidor);
-        Conexao.Properties.Add('user='+ Usuario);
-        Conexao.Properties.Add('password='+ Senha);
-        Conexao.Properties.Add('port='+ IntToStr(Porta));
-        Conexao.Properties.Add('Database='+ Database);
-        Conexao.Properties.Add('Protocol='+ Driver);
-        Conexao.Connected := True;
+        Conexao.Params.Clear;
+        Conexao.Params.Add('Server='+ Servidor);
+        Conexao.Params.Add('User_Name='+ Usuario);
+        Conexao.Params.Add('Password='+ Senha);
+        Conexao.Params.Add('port='+ IntToStr(Porta));
+        Conexao.Params.Add('Database='+ Database);
+        Conexao.Params.Add('DriverID='+ Driver);
+        Conexao.Open();
+
      Except
         on E:Exception do
         ShowMessage('Erro ao carregar parâmetros de conexão!'#13#10 + E.Message);
@@ -93,7 +94,7 @@ begin
     ArqIni.WriteString(Secao, 'Database', Banco);
     ArqIni.WriteString(Secao, 'Servidor', Servidor);
     ArqIni.WriteInteger(Secao, 'Porta', Porta);
-    ArqIni.WriteString(Secao, 'Protocol', Driver);
+    ArqIni.WriteString(Secao, 'Driver', Driver);
   finally
      ArqIni.Free;
   end;
@@ -110,7 +111,7 @@ begin
     Database    := ArqIni.ReadString(Secao, 'Database', '');
     Senha       := ArqIni.ReadString(Secao, 'Senha', '');
     Usuario     := ArqIni.ReadString(Secao, 'Usuario', '');
-    Driver      := ArqIni.ReadString(Secao, 'Protocol', '');
+    Driver      := ArqIni.ReadString(Secao, 'Driver', '');
   finally
      ArqIni.Free;
   end;

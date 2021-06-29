@@ -256,22 +256,19 @@ object frmConectaDB: TfrmConectaDB
     Left = 560
     Top = 8
   end
-  object DBConect: TZConnection
-    ControlsCodePage = cCP_UTF16
-    AutoEncodeStrings = True
-    ClientCodepage = 'UTF-8'
-    Catalog = 'db_microdata'
-    Properties.Strings = (
-      ''
-      'codepage=UTF-8'
-      'controls_cp=CP_UTF16')
-    HostName = 'DESKTOP-SJGTFOH'
-    Port = 1433
-    Database = 'db_microdata'
-    User = 'sa'
-    Password = '1234'
-    Protocol = 'mssql'
-    Left = 498
-    Top = 12
+  object DBConect: TFDConnection
+    Params.Strings = (
+      'Server=DESKTOP-SJGTFOH'
+      'User_Name=sa'
+      'Password=1234'
+      'Database=db_microdata'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 472
+    Top = 56
+  end
+  object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
+    Left = 560
+    Top = 56
   end
 end

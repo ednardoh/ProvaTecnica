@@ -9,9 +9,9 @@ uses
   FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.VCLUI.Async,
-  FireDAC.Comp.UI, FireDAC.Phys.IBBase,
-  Menus, Mask, DBCtrls, ShellApi, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, ZAbstractConnection,
-  ZConnection;
+  FireDAC.Comp.UI, FireDAC.Phys.IBBase, Menus, Mask, DBCtrls, ShellApi,
+  FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef,
+  FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef, FireDAC.Phys.ODBCBase;
 
 type
   TfrmConectaDB = class(TForm)
@@ -34,7 +34,8 @@ type
     ODG_Abrebanco: TOpenDialog;
     lblConexao: TLabel;
     btn_GravaINI: TButton;
-    DBConect: TZConnection;
+    DBConect: TFDConnection;
+    FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_OpenbancoClick(Sender: TObject);
     procedure Edt_HostEnter(Sender: TObject);
@@ -68,7 +69,6 @@ end;
 
 procedure TfrmConectaDB.btn_GravaINIClick(Sender: TObject);
 begin
-  DBConect.LibraryLocation := ExtractFilePath(Application.ExeName)+'ntwdblib.dll';
   conexaoClass.GravaINI(edt_Usuario.Text,
                         Edt_Senha.Text,
                         Edt_Host.Text,

@@ -1,0 +1,150 @@
+object ServiceCliente: TServiceCliente
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 172
+  Width = 366
+  object Connection: TZConnection
+    ControlsCodePage = cCP_UTF16
+    AutoEncodeStrings = True
+    ClientCodepage = 'UTF-8'
+    Catalog = ''
+    Properties.Strings = (
+      'controls_cp=CP_UTF16'
+      'codepage=UTF-8'
+      'AutoEncodeStrings=True')
+    HostName = 'DESKTOP-SJGTFOH'
+    Port = 1433
+    Database = 'db_microdata'
+    User = 'sa'
+    Password = '1234'
+    Protocol = 'mssql'
+    Left = 82
+    Top = 60
+  end
+  object qryCadastro: TZQuery
+    Connection = Connection
+    SQL.Strings = (
+      
+        'select c.id, c.nome, c.Cep, c.Logradouro, c.Numero, c.Complement' +
+        'o, c.Bairro, c.Cidade, c.Ibge_cidade, c.Sigla_uf, c.Ibge_uf'
+      'from cliente c')
+    Params = <>
+    Left = 164
+    Top = 62
+    object qryCadastroid: TIntegerField
+      FieldName = 'id'
+      ReadOnly = True
+    end
+    object qryCadastronome: TWideStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 50
+    end
+    object qryCadastroCep: TWideStringField
+      FieldName = 'Cep'
+      Required = True
+      Size = 8
+    end
+    object qryCadastroLogradouro: TWideStringField
+      FieldName = 'Logradouro'
+      Required = True
+      Size = 60
+    end
+    object qryCadastroNumero: TWideStringField
+      FieldName = 'Numero'
+      Required = True
+      Size = 10
+    end
+    object qryCadastroBairro: TWideStringField
+      FieldName = 'Bairro'
+      Size = 40
+    end
+    object qryCadastroCidade: TWideStringField
+      FieldName = 'Cidade'
+      Required = True
+      Size = 40
+    end
+    object qryCadastroSigla_uf: TWideStringField
+      FieldName = 'Sigla_uf'
+      Required = True
+      Size = 2
+    end
+    object qryCadastroComplemento: TWideStringField
+      FieldName = 'Complemento'
+      Size = 40
+    end
+    object qryCadastroIbge_cidade: TWideStringField
+      FieldName = 'Ibge_cidade'
+      Required = True
+      Size = 7
+    end
+    object qryCadastroIbge_uf: TWideStringField
+      FieldName = 'Ibge_uf'
+      Required = True
+      Size = 2
+    end
+  end
+  object qryPesquisa: TZQuery
+    Connection = Connection
+    SQL.Strings = (
+      
+        'select c.id, c.nome, c.Cep, c.Logradouro, c.Numero, c.Complement' +
+        'o, c.Bairro, c.Cidade, c.Ibge_cidade, c.Sigla_uf, c.Ibge_uf'
+      'from cliente c')
+    Params = <>
+    Left = 244
+    Top = 62
+    object qryPesquisaid: TIntegerField
+      FieldName = 'id'
+      ReadOnly = True
+    end
+    object qryPesquisanome: TWideStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 50
+    end
+    object qryPesquisaCep: TWideStringField
+      FieldName = 'Cep'
+      Required = True
+      Size = 8
+    end
+    object qryPesquisaLogradouro: TWideStringField
+      FieldName = 'Logradouro'
+      Required = True
+      Size = 60
+    end
+    object qryPesquisaNumero: TWideStringField
+      FieldName = 'Numero'
+      Required = True
+      Size = 10
+    end
+    object qryPesquisaBairro: TWideStringField
+      FieldName = 'Bairro'
+      Size = 40
+    end
+    object qryPesquisaCidade: TWideStringField
+      FieldName = 'Cidade'
+      Required = True
+      Size = 40
+    end
+    object qryPesquisaSigla_uf: TWideStringField
+      FieldName = 'Sigla_uf'
+      Required = True
+      Size = 2
+    end
+    object qryPesquisaComplemento: TWideStringField
+      FieldName = 'Complemento'
+      Size = 40
+    end
+    object qryPesquisaIbge_cidade: TWideStringField
+      FieldName = 'Ibge_cidade'
+      Required = True
+      Size = 7
+    end
+    object qryPesquisaIbge_uf: TWideStringField
+      FieldName = 'Ibge_uf'
+      Required = True
+      Size = 2
+    end
+  end
+end

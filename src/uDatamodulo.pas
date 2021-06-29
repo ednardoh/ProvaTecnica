@@ -3,17 +3,23 @@ unit uDatamodulo;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ZAbstractConnection, ZConnection, Vcl.Forms;
+  System.SysUtils, System.Classes, Data.DB, Vcl.Forms, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.ODBCBase,
+  FireDAC.Comp.UI;
 
 type
   TfrmDatamodulo = class(TDataModule)
-    DBConect: TZConnection;
-    QryAux: TZQuery;
     dsPesquisa: TDataSource;
     dsClientes: TDataSource;
     dsContatos: TDataSource;
-    procedure DataModuleCreate(Sender: TObject);
+    DBConect: TFDConnection;
+    FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
+    QryAux: TFDQuery;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
   private
     { Private declarations }
   public
@@ -44,11 +50,6 @@ begin
        result:=result+Texto[i];
      i:=i+1;
     end;
-end;
-
-procedure TfrmDatamodulo.DataModuleCreate(Sender: TObject);
-begin
-  DBConect.LibraryLocation := ExtractFilePath(Application.ExeName)+'ntwdblib.dll';
 end;
 
 end.

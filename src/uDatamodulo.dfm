@@ -1,32 +1,7 @@
 object frmDatamodulo: TfrmDatamodulo
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
   Height = 301
   Width = 409
-  object DBConect: TZConnection
-    ControlsCodePage = cCP_UTF16
-    AutoEncodeStrings = True
-    ClientCodepage = 'UTF-8'
-    Catalog = ''
-    Properties.Strings = (
-      'controls_cp=CP_UTF16'
-      'codepage=UTF-8'
-      'AutoEncodeStrings=True')
-    HostName = 'DESKTOP-SJGTFOH'
-    Port = 1433
-    Database = 'db_microdata'
-    User = 'sa'
-    Password = '1234'
-    Protocol = 'mssql'
-    Left = 30
-    Top = 16
-  end
-  object QryAux: TZQuery
-    Connection = DBConect
-    Params = <>
-    Left = 116
-    Top = 20
-  end
   object dsPesquisa: TDataSource
     Left = 184
     Top = 24
@@ -36,7 +11,32 @@ object frmDatamodulo: TfrmDatamodulo
     Top = 24
   end
   object dsContatos: TDataSource
-    Left = 274
-    Top = 84
+    Left = 330
+    Top = 28
+  end
+  object DBConect: TFDConnection
+    Params.Strings = (
+      'Server=DESKTOP-SJGTFOH'
+      'Password=1234'
+      'User_Name=sa'
+      'Database=db_microdata'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 16
+    Top = 24
+  end
+  object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
+    Left = 192
+    Top = 88
+  end
+  object QryAux: TFDQuery
+    Connection = DBConect
+    Left = 64
+    Top = 24
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 328
+    Top = 88
   end
 end
