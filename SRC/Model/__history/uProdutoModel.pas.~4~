@@ -1,0 +1,33 @@
+unit uProdutoModel;
+
+interface
+
+uses
+  uEnumerado, FireDAC.Comp.Client;
+
+type
+  TProdutoModel = class
+  private
+    FAcao: TAcao;
+    FCodigo: string;
+    FDescricao: string;
+    FPRECOVENDA: Double;
+
+    procedure SetAcao(const Value: TAcao);
+    procedure SetCodigo(const Value: string);
+    procedure SetDescricao(const Value: string);
+    procedure SetFPRECOVENDA(const Value: Double);
+  public
+    function Obter: TFDQuery;
+    function Salvar: Boolean;
+    function GetId(AAutoIncrementar: Integer): Integer;
+
+    property Acao: TAcao read FAcao write SetAcao;
+    property Codigo: string read FCodigo write SetCodigo;
+    property Descricao: string read FDescricao write SetDescricao;
+    property PRECOVENDA: Double read FPRECOVENDA write SetPRECOVENDA;
+  end;
+
+implementation
+
+end.

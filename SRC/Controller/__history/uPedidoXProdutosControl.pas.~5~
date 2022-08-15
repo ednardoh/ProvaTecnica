@@ -1,0 +1,21 @@
+unit uPedidoXProdutosControl;
+
+interface
+
+uses
+  uPedidoXProdutosModel, System.SysUtils, FireDAC.Comp.Client;
+
+type
+  TPedidoXProdutosControl = class
+    private
+      FPedidoXProdutosModel: TPedidoXProdutosModel;
+
+    public
+
+
+  end;
+
+
+implementation
+
+end.

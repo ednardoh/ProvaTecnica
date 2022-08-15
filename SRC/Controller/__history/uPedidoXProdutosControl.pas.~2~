@@ -1,0 +1,10 @@
+unit uPedidoXProdutosControl;
+
+uses
+  uPedidoXProdutosModel, System.SysUtils, FireDAC.Comp.Client;
+
+interface
+
+implementation
+
+end.

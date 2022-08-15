@@ -1,0 +1,57 @@
+unit uPedidovendaDAO;
+
+interface
+
+uses
+  FireDAC.Comp.Client, uConexao, uPedidovendaModel, System.SysUtils, uSistemaControl;
+
+type
+  TPedidovendaDAO = class
+    private
+      FConexao: TConexao;
+    public
+      constructor Create;
+
+      function Incluir(APedidovendaModel: TPedidovendaModel): Boolean;
+      function Alterar(APedidovendaModel: TPedidovendaModel): Boolean;
+      function Excluir(APedidovendaModel: TPedidovendaModel): Boolean;
+      function GetId(AAutoIncrementar: Integer): Integer;
+      function Obter: TFDQuery;
+
+  end;
+
+implementation
+
+{ TPedidovendaDAO }
+
+constructor TPedidovendaDAO.Create;
+begin
+  FConexao := TSistemaControl.GetInstance().Conexao;
+end;
+
+function TPedidovendaDAO.GetId(AAutoIncrementar: Integer): Integer;
+begin
+
+end;
+
+function TPedidovendaDAO.Incluir(APedidovendaModel: TPedidovendaModel): Boolean;
+begin
+
+end;
+
+function TPedidovendaDAO.Alterar(APedidovendaModel: TPedidovendaModel): Boolean;
+begin
+
+end;
+
+function TPedidovendaDAO.Excluir(APedidovendaModel: TPedidovendaModel): Boolean;
+begin
+
+end;
+
+function TPedidovendaDAO.Obter: TFDQuery;
+begin
+
+end;
+
+end.

@@ -1,0 +1,10 @@
+unit uPedidovendaControl;
+
+interface
+
+uses
+  uPedidovendaModel, System.SysUtils, FireDAC.Comp.Client;
+
+implementation
+
+end.

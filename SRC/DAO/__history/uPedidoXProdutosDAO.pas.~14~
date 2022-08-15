@@ -1,0 +1,123 @@
+unit uPedidoXProdutosDAO;
+
+interface
+
+uses
+  FireDAC.Comp.Client, uConexao, System.SysUtils, uSistemaControl;
+
+type
+  TPedidoXProdutosDAO = class
+    private
+      FConexao: TConexao;
+    public
+      constructor Create;
+
+      function Incluir(APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+      function Alterar(APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+      function Excluir(APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+      function GetId: Integer;
+      function Obter: TFDQuery;
+
+  end;
+
+implementation
+
+{ TPedidoXProdutosDAO }
+
+constructor TPedidoXProdutosDAO.Create;
+begin
+  FConexao := TSistemaControl.GetInstance().Conexao;
+end;
+
+function TPedidoXProdutosDAO.GetId: Integer;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.Open('SELECT coalesce(MAX(ID),0)+1 AS ID FROM tb_pedidos_produtos');
+    try
+      Result := VQry.Fields[0].AsInteger;
+    finally
+      VQry.Close;
+    end;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TPedidoXProdutosDAO.Incluir(
+  APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('insert into tb_pedidos_produtos (ID, NUMPEDIDO, CODPRODUTO, QUANTIDADE, VALOR_UNITARIO, VALOR_TOTAL) values (:ID, :NUMPEDIDO, :CODPRODUTO, :QUANTIDADE, :VALOR_UNITARIO, :VALOR_TOTAL)',
+                  [
+                    APedidoXProdutosModel.ID,
+                    APedidoXProdutosModel.NUMPEDIDO,
+                    APedidoXProdutosModel.CODPRODUTO,
+                    APedidoXProdutosModel.QUANTIDADE,
+                    APedidoXProdutosModel.VALORUNITARIO,
+                    APedidoXProdutosModel.VALORTOTAL
+                   ]
+                  );
+
+    Result := True;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TPedidoXProdutosDAO.Alterar(
+  APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('update tb_pedidos_produtos set QUANTIDADE=:QUANTIDADE, VALOR_UNITARIO=:VALOR_UNITARIO, VALOR_TOTAL=:VALOR_TOTAL where (ID = :ID and NUMPEDIDO=:NUMPEDIDO and CODPRODUTO=:CODPRODUTO)',
+                  [
+                    APedidoXProdutosModel.ID,
+                    APedidoXProdutosModel.NUMPEDIDO,
+                    APedidoXProdutosModel.CODPRODUTO,
+                    APedidoXProdutosModel.QUANTIDADE,
+                    APedidoXProdutosModel.VALORUNITARIO,
+                    APedidoXProdutosModel.VALORTOTAL
+                   ]
+                  );
+    Result := True;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TPedidoXProdutosDAO.Excluir(
+  APedidoXProdutosModel: TPedidoXProdutosModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('delete from tb_pedidos_produtos where (ID = :ID and NUMPEDIDO=:NUMPEDIDO and CODPRODUTO=:CODPRODUTO)',
+                  [APedidoXProdutosModel.ID, APedidoXProdutosModel.NUMPEDIDO, APedidoXProdutosModel.CODPRODUTO]);
+
+    Result := True;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TPedidoXProdutosDAO.Obter: TFDQuery;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+
+  VQry.Open('select ID, NUMPEDIDO, CODPRODUTO, QUANTIDADE, VALOR_UNITARIO, VALOR_TOTAL from tb_pedidos_produtos order by 1');
+
+  Result := VQry;
+end;
+
+end.

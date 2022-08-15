@@ -1,0 +1,19 @@
+unit uPedidovendaControl;
+
+interface
+
+uses
+  uPedidovendaModel, System.SysUtils, FireDAC.Comp.Client;
+
+type
+  TPedidovendaControl = class
+    private
+
+    public
+
+
+  end;
+
+implementation
+
+end.

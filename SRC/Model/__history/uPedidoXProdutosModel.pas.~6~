@@ -1,0 +1,43 @@
+unit uPedidoXProdutosModel;
+
+interface
+
+uses
+  uEnumerado, FireDAC.Comp.Client;
+
+type
+  TPedidoXProdutosModel = class
+    private
+      FAcao: TAcao;
+      FID: integer;
+      FNUMPEDIDO: integer;
+      FCODPRODUTO: string;
+      FQUANTIDADE: double;
+      FVALORUNITARIO: double;
+      FVALORTOTAL: double;
+
+      procedure SetAcao(const Value: TAcao);
+      procedure SetID(const Value: integer);
+      procedure SetNUMPEDIDO(const Value: integer);
+      procedure SetCODPRODUTO(const Value: string);
+      procedure SetQUANTIDADE(const Value: double);
+      procedure SetVALORUNITARIO(const Value: double);
+      procedure SetVALORTOTAL(const Value: double);
+    public
+      function Obter: TFDQuery;
+      function Salvar: Boolean;
+      function GetId(AAutoIncrementar: Integer): Integer;
+
+      property Acao: TAcao            read FAcao          write SetAcao;
+      property ID: integer            read FID            write SetID;
+      property NUMPEDIDO: integer     read FNUMPEDIDO     write SetNUMPEDIDO;
+      property CODPRODUTO: string     read FCODPRODUTO    write SetCODPRODUTO;
+      property QUANTIDADE: double     read FQUANTIDADE    write SetQUANTIDADE;
+      property VALORUNITARIO: double  read FVALORUNITARIO write SetVALORUNITARIO;
+      property VALORTOTAL: double     read FVALORTOTAL     write SetVALORTOTAL;
+
+  end;
+
+implementation
+
+end.

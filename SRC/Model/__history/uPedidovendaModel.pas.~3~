@@ -1,0 +1,37 @@
+unit uPedidovendaModel;
+
+interface
+
+uses
+  uEnumerado, FireDAC.Comp.Client;
+
+type
+  TPedidovendaModel = class
+  private
+    FAcao: TAcao;
+    FNUMPEDIDO: integer;
+    FDATAEMISSAO: TDateTime;
+    FCODCLIENTE: integer;
+    FVALORTOTAL: double;
+
+    procedure SetAcao(const Value: TAcao);
+    procedure SetNUMPEDIDO(const Value: integer);
+    procedure SetDATAEMISSAO(const Value: TDateTime);
+    procedure SetCODCLIENTE(const Value: integer);
+    procedure SetVALORTOTAL(const Value: double);
+  public
+    function Obter: TFDQuery;
+    function Salvar: Boolean;
+    function GetId(AAutoIncrementar: Integer): Integer;
+
+    property Acao: TAcao read FAcao write SetAcao;
+    property NUMPEDIDO: integer read FNUMPEDIDO write SetNUMPEDIDO;
+    property DATAEMISSAO: TDateTime read FDATAEMISSAO write SetDATAEMISSAO;
+    property CODCLIENTE: integer read FCODCLIENTE write SetCODCLIENTE;
+    property VALORTOTAL: double read FVALORTOTAL write SetVALORTOTAL;
+
+  end;
+
+implementation
+
+end.

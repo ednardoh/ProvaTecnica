@@ -1,0 +1,95 @@
+unit uProdutoDAO;
+
+interface
+
+uses
+  FireDAC.Comp.Client, uConexao, uProdutoModel, System.SysUtils, uSistemaControl;
+
+type
+  TProdutoDAO = class
+    private
+      FConexao: TConexao;
+    public
+    constructor Create;
+
+    function Incluir(AProdutoModel: TProdutoModel): Boolean;
+    function Alterar(AProdutoModel: TProdutoModel): Boolean;
+    function Excluir(AProdutoModel: TProdutoModel): Boolean;
+    function GetId(AAutoIncrementar: Integer): Integer;
+    function Obter: TFDQuery;
+
+  end;
+
+implementation
+
+{ TProdutoDAO }
+
+constructor TProdutoDAO.Create;
+begin
+  FConexao := TSistemaControl.GetInstance().Conexao;
+end;
+
+function TProdutoDAO.GetId(AAutoIncrementar: Integer): Integer;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.Open('SELECT coalesce(MAX(CODIGO),0)+1 AS CODIGO FROM tb_produtos');
+    try
+      Result := VQry.Fields[0].AsInteger;
+    finally
+      VQry.Close;
+    end;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TProdutoDAO.Incluir(AClienteModel: TProdutoModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('insert into tb_produtos (CODIGO, DESCRICAO, PRECO_VENDA) values (:CODIGO, :DESCRICAO, :PRECO_VENDA)',
+                  [AProdutoModel.Codigo, AProdutoModel.Descricao, AProdutoModel.PRECOVENDA]);
+
+    Result := True;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TProdutoDAO.Obter: TFDQuery;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+
+  VQry.Open('select CODIGO, DESCRICAO, PRECO_VENDA from tb_produtos order by 1');
+
+  Result := VQry;
+end;
+
+function TProdutoDAO.Alterar(AClienteModel: TProdutoModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('update tb_produtos set DESCRICAO = :DESCRICAO, PRECO_VENDA=:PRECO_VENDA where (codigo = :codigo)',
+                 [AProdutoModel.DESCRICAO, AProdutoModel.PRECOVENDA, AProdutoModel.codigo]);
+
+    Result := True;
+  finally
+    VQry.Free;
+  end;
+end;
+
+function TProdutoDAO.Excluir(AClienteModel: TProdutoModel): Boolean;
+begin
+
+end;
+
+end.

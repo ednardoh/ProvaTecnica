@@ -1,0 +1,29 @@
+program PedidoDeVenda;
+
+uses
+  Vcl.Forms,
+  UPrincipal in 'View\UPrincipal.pas' {frmPrincipal},
+  Vcl.Themes,
+  Vcl.Styles,
+  UPedidoDeVenda in 'View\UPedidoDeVenda.pas' {frmMov_PEDVendas},
+  uClienteDAO in 'DAO\uClienteDAO.pas',
+  uSistemaControl in 'Controller\uSistemaControl.pas',
+  uEnumerado in 'Model\uEnumerado.pas',
+  uConexao in 'DAO\uConexao.pas',
+  uClienteControl in 'Controller\uClienteControl.pas',
+  uProdutoModel in 'Model\uProdutoModel.pas',
+  uClienteModel in 'Model\uClienteModel.pas',
+  uProdutoDAO in 'DAO\uProdutoDAO.pas',
+  uProdutoControl in 'Controller\uProdutoControl.pas',
+  uPedidovendaModel in 'Model\uPedidovendaModel.pas',
+  uPedidovendaDAO in 'DAO\uPedidovendaDAO.pas',
+  uPedidovendaControl in 'Controller\uPedidovendaControl.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.Run;
+end.
