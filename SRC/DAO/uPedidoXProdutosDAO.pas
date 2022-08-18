@@ -77,7 +77,7 @@ var
 begin
   VQry := FConexao.CriarQuery();
   try
-    VQry.ExecSQL('update tb_pedidos_produtos set QUANTIDADE=:QUANTIDADE, VALOR_UNITARIO=:VALOR_UNITARIO, VALOR_TOTAL=:VALOR_TOTAL where (ID=:ID and NUMPEDIDO=:NUMPEDIDO and CODPRODUTO=:CODPRODUTO)',
+    VQry.ExecSQL('insert into tb_pedidos_produtos (ID, NUMPEDIDO, CODPRODUTO, QUANTIDADE, VALOR_UNITARIO, VALOR_TOTAL) values (:ID, :NUMPEDIDO, :CODPRODUTO, :QUANTIDADE, :VALOR_UNITARIO, :VALOR_TOTAL)',
                   [
                     APedidoXProdutosModel.ID,
                     APedidoXProdutosModel.NUMPEDIDO,

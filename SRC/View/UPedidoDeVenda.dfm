@@ -15,6 +15,7 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
   Position = poDesktopCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
@@ -29,7 +30,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1367
     object pn_Top: TPanel
       Left = 0
       Top = 0
@@ -40,7 +40,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1367
       object Shape1: TShape
         Left = 11
         Top = 0
@@ -90,7 +89,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 1358
       end
     end
     object pn_Botton: TPanel
@@ -103,7 +101,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1367
       object Label6: TLabel
         Left = 100
         Top = -267
@@ -128,7 +125,7 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
@@ -145,7 +142,7 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
@@ -155,24 +152,23 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
       object Panel8: TPanel
         Left = 329
         Top = 0
-        Width = 113
+        Width = 107
         Height = 62
         Align = alClient
         Caption = 'F5 - Cliente'
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
         TabOrder = 2
-        ExplicitLeft = 312
-        ExplicitWidth = 124
+        ExplicitWidth = 113
       end
       object Panel9: TPanel
-        Left = 442
+        Left = 436
         Top = 0
         Width = 223
         Height = 62
@@ -181,16 +177,16 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
         TabOrder = 3
-        ExplicitLeft = 430
+        ExplicitLeft = 442
       end
       object Panel10: TPanel
-        Left = 665
+        Left = 659
         Top = 0
         Width = 196
         Height = 62
@@ -199,16 +195,16 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
         TabOrder = 4
-        ExplicitLeft = 743
+        ExplicitLeft = 665
       end
       object Panel6: TPanel
-        Left = 861
+        Left = 855
         Top = 0
         Width = 212
         Height = 62
@@ -217,18 +213,18 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
         TabOrder = 5
-        ExplicitLeft = 854
+        ExplicitLeft = 861
       end
       object Panel11: TPanel
-        Left = 1073
+        Left = 1067
         Top = 0
-        Width = 172
+        Width = 178
         Height = 62
         Align = alRight
         BiDiMode = bdLeftToRight
@@ -236,13 +232,14 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = 12615680
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -15
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBiDiMode = False
         ParentBackground = False
         ParentFont = False
         TabOrder = 6
+        ExplicitLeft = 1068
       end
     end
     object pn_Grid: TPanel
@@ -255,7 +252,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
-      ExplicitWidth = 1367
       object Panel7: TPanel
         Left = 0
         Top = 72
@@ -266,7 +262,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 1367
         object Label2: TLabel
           Left = 32
           Top = -3
@@ -614,7 +609,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Color = clWhite
         ParentBackground = False
         TabOrder = 3
-        ExplicitWidth = 1367
         object Label13: TLabel
           Left = 32
           Top = 1
@@ -742,7 +736,6 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Height = 43
         Align = alBottom
         TabOrder = 4
-        ExplicitWidth = 1367
         object Label7: TLabel
           Left = 842
           Top = 16
@@ -811,7 +804,12 @@ object frmMov_PEDVendas: TfrmMov_PEDVendas
         Name = 'Valor_Total'
         DataType = ftFloat
       end>
-    IndexDefs = <>
+    IndexDefs = <
+      item
+        Name = 'QryPedprodutoIDX_ID'
+        Fields = 'ID'
+      end>
+    IndexFieldNames = 'ID'
     Params = <>
     StoreDefs = True
     AfterPost = QryPedprodutoAfterPost
